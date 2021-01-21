@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Styling.css" />
+    <title>GCP</title>
+</head>
+<body>
+    <div class="mainDiv" id="mainDiv">
+        <div class="titleDiv" id="titleDiv">
+            <h1 class="title" id="title">
+                G<a class="loweredText">enerate</a> C<a class="loweredText">ustom</a> P<a class="loweredText">laylists</a>
+            </h1>
+            <h2 class="welcomeTitle" id="welcomeTitle">
+                Welcome
+            </h2>
+        </div>
+        <div class="playlistDiv" id="playlistDiv">
+            <h2 class="descriptiveTitle">
+                Playlist settings:
+            </h2>
+            <div class="playlistTitleDiv">
+                <a class="descriptiveText">
+                    Title:
+                </a>
+                <input class="titleInput" id="titleInput" />
+            </div>
+            <br />
+            <div class="playlistDescriptionDiv">
+                <a class="descriptiveText2">
+                    Description:
+                </a>
+                <textarea class="descriptionInput" id="descriptionInput"></textarea>
+            </div>
+            <br />
+            <div class="slidecontainer">
+                <a class="descriptiveText2" id="trackCounter">
+                    Number of Tracks: 50
+                </a>
+            </div>
+            <br/>
+            <div>
+                <input type="range" min="1" max="100" value="50" class="slider" id="trackSlider" oninput="changeTracks()">
+            </div>
+        </div>
+        <div class="mainSeedDiv" id="mainSeedDiv">
+            <h2 class="seedTitle" id="seedTitle">
+                Enter Seeds:
+            </h2>
+            <div class="seedDiv" id="seedDiv1">
+                <select class="seedSelect" name="seedType" id="seedType1">
+                    <option value="Artist">Artist</option>
+                    <option value="Track">Track</option>
+                    <option value="Genre">Genre</option>
+                </select>
+                <input class="seedInput" id="seedInput1" />
+            </div>
+            <br class="smallSeparator" />
+            <div class="seedDiv" id="seedDiv2">
+                <select class="seedSelect" name="seedType" id="seedType2">
+                    <option value="Artist">Artist</option>
+                    <option value="Track">Track</option>
+                    <option value="Genre">Genre</option>
+                </select>
+                <input class="seedInput" id="seedInput2" />
+            </div>
+            <br class="smallSeparator" />
+            <div class="seedDiv" id="seedDiv3">
+                <select class="seedSelect" name="seedType" id="seedType3">
+                    <option value="Artist">Artist</option>
+                    <option value="Track">Track</option>
+                    <option value="Genre">Genre</option>
+                </select>
+                <input class="seedInput" id="seedInput3" />
+            </div>
+            <br class="smallSeparator" />
+            <div class="seedDiv" id="seedDiv4">
+                <select class="seedSelect" name="seedType" id="seedType4">
+                    <option value="Artist">Artist</option>
+                    <option value="Track">Track</option>
+                    <option value="Genre">Genre</option>
+                </select>
+                <input class="seedInput" id="seedInput4" />
+            </div>
+            <br class="smallSeparator" />
+            <div class="seedDiv" id="seedDiv5">
+                <select class="seedSelect" name="seedType" id="seedType5">
+                    <option value="Artist">Artist</option>
+                    <option value="Track">Track</option>
+                    <option value="Genre">Genre</option>
+                </select>
+                <input class="seedInput" id="seedInput5" />
+            </div>
+        </div>
+        <br/>
+        <Button class="submitButton" onclick="generatePlaylist()">
+            Generate Playlist
+        </Button>
+    </div>
+    <script src="JSONbuilding.js"></script>
+    <script src="functions.js"></script>
+    <script src="auth.js"></script>
+    <script src="componentScripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "gcpweb-testing",
+  "version": "0.0.0",
+  "description": "GCPWebTesting",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {}
+}
