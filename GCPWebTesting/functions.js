@@ -44,11 +44,16 @@ function getSpotifyId(target, callback) {
         searchRequest.onreadystatechange = function () {
             if (searchRequest.readyState == XMLHttpRequest.DONE && searchRequest.status == 200 && searchRequest.responseText != "") {
                 let response = JSON.parse(searchRequest.responseText)
-                inputValues[target].value = response[inputValues[target].type.toLowerCase() + "s"].items[0].id
+                inputValues[target].value = response[inputValues[target].type.toLowerCase() + "s"].items[0].id //Index of response is either Tracks or Artists depending on the type of the inputvalue
                 if (target + 1 < inputValues.length && inputValues[target + 1].value != 0) {
                     callback(target + 1, getSpotifyId)
                 } else {
                     getTracks()
+                }
+            } else if (searchRequest.readyState == XMLHttpRequest.DONE && searchRequest.status == 401) {
+                if (confirm("Token has expired or is invalid, do you want to get a new one?")) {
+                    window.open("https://accounts.spotify.com/authorize?client_id=b12e7cbb42944fbbbfd1756a0ad6e3fc&response_type=token&redirect_uri=" + URL.replaceAll("/", "%2F") +
+                        "&scope=user-read-private%20playlist-modify-public", "_self")
                 }
             }
         }

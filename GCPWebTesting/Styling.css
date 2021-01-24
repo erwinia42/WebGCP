@@ -4,6 +4,7 @@
     --spotify-black: #191414;
 }
 html {
+    display:flex;
     min-height:100%;
     background-image:url("backGroundForest.jpg");
     background-size:cover;
@@ -12,11 +13,12 @@ html {
     font-family:"Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body {
-    min-height:98%;
-    display:flex;
-    flex:1 1 auto;
-    justify-content:center;
-    align-items:stretch;
+    min-height: 98%;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: stretch;
+    overflow-y: hidden;
 }
 br.smallSeparator{
     content:"";
@@ -24,10 +26,11 @@ br.smallSeparator{
 }
 .mainDiv{
     min-height:98%;
-    min-width:25%;
+    min-width:550px;
     display:flex;
     flex-direction:column;
     align-items:center;
+    flex:0;
     justify-content:space-between;
     background-color:var(--spotify-black);
     border-radius:15px;
@@ -44,6 +47,12 @@ h2.seedTitle{
     font-size:48px;
     color:var(--spotify-green);
     position:center;
+    margin:-10px;
+}
+h2.seedDesc {
+    font-size: 24px;
+    color: var(--spotify-green);
+    position: center;
 }
 h2.nameTitle {
     font-size: 24px;
@@ -75,12 +84,14 @@ a.descriptiveText2 {
     height: 30px;
     padding: 2px;
 }
-textarea.descriptionInput{
-    font-size:18px;
-    color:var(--spotify-black);
-    background-color:var(--spotify-white);
-    width:100%;
-    height:60px;
+textarea.descriptionInput {
+    font-size: 18px;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--spotify-black);
+    background-color: var(--spotify-white);
+    width: 99%;
+    height: 60px;
+    resize: none;
 }
 .playlistDiv{
     width:95%;
@@ -165,7 +176,8 @@ Button.submitButton:hover {
     background: var(--spotify-green);
     cursor: pointer;
 }
-.loweredText{
-    font-size:24px;
+.loweredText {
+    font-size: 24px;
 }
+
 

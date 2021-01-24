@@ -42,6 +42,11 @@ function getUserData() {
             user_name = response.display_name
             document.getElementById("welcomeTitle").textContent = "Welcome " + user_name.substr(0, 20)
             user_id = response.id
+        } else if (dataRequest.readyState == XMLHttpRequest.DONE && dataRequest.status == 401) {
+            if (confirm("Token has expired or is invalid, do you want to get a new one?")) {
+                window.open("https://accounts.spotify.com/authorize?client_id=b12e7cbb42944fbbbfd1756a0ad6e3fc&response_type=token&redirect_uri=" + URL.replaceAll("/", "%2F") +
+                    "&scope=user-read-private%20playlist-modify-public", "_self")
+            }
         }
     }
 }
