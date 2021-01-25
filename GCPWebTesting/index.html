@@ -3,103 +3,115 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
     <link rel="stylesheet" href="Styling.css" />
     <title>GCP</title>
 
     <script data-ad-client="ca-pub-2010381049436379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
 </head>
 <body>
     <div class="mainDiv" id="mainDiv">
         <div class="titleDiv" id="titleDiv">
             <h1 class="title" id="title">
-                G<a class="loweredText">enerate</a> C<a class="loweredText">ustom</a> P<a class="loweredText">laylists</a>
+                GCP
             </h1>
             <h2 class="welcomeTitle" id="welcomeTitle">
                 Welcome
             </h2>
         </div>
-        <div class="playlistDiv" id="playlistDiv">
-            <h2 class="descriptiveTitle">
-                Playlist settings:
-            </h2>
-            <div class="playlistTitleDiv">
-                <a class="descriptiveText">
-                    Title:
-                </a>
-                <input class="titleInput" id="titleInput" />
+        <hr class="whiteLine" />
+        <div class="scrollableDiv">
+            <div class="playlistDiv" id="playlistDiv">
+                <h2 class="descriptiveTitle">
+                    Playlist settings:
+                </h2>
+                <div class="playlistTitleDiv">
+                    <a class="descriptiveText">
+                        Title:
+                    </a>
+                    <input class="titleInput" id="titleInput" />
+                </div>
+                <br />
+                <div class="playlistDescriptionDiv">
+                    <a class="descriptiveText2">
+                        Description:
+                    </a>
+                    <textarea class="descriptionInput" id="descriptionInput"></textarea>
+                </div>
+                <br />
+                <div class="slidecontainer">
+                    <a class="descriptiveText2" id="trackCounter">
+                        Number of Tracks: 50
+                    </a>
+                </div>
+                <br />
+                <div>
+                    <input type="range" min="1" max="100" value="50" class="slider" id="trackSlider" oninput="changeTracks()">
+                </div>
             </div>
             <br />
-            <div class="playlistDescriptionDiv">
-                <a class="descriptiveText2">
-                    Description:
-                </a>
-                <textarea class="descriptionInput" id="descriptionInput"></textarea>
+            <div class="mainSeedDiv" id="mainSeedDiv">
+                <h2 class="seedTitle" id="seedTitle">
+                    Enter Seeds:
+                </h2>
+                <h2 class="seedDesc">
+                    (Artists, Tracks or Genres that you like)
+                </h2>
+                <div class="seedDiv" id="seedDiv1">
+                    <select class="seedSelect" name="seedType" id="seedType1">
+                        <option value="Artist">Artist</option>
+                        <option value="Track">Track</option>
+                        <option value="Genre">Genre</option>
+                    </select>
+                    <input class="seedInput" id="seedInput1" />
+                </div>
+                <br class="smallSeparator" />
+                <div class="seedDiv" id="seedDiv2">
+                    <select class="seedSelect" name="seedType" id="seedType2">
+                        <option value="Artist">Artist</option>
+                        <option value="Track">Track</option>
+                        <option value="Genre">Genre</option>
+                    </select>
+                    <input class="seedInput" id="seedInput2" />
+                </div>
+                <br class="smallSeparator" />
+                <div class="seedDiv" id="seedDiv3">
+                    <select class="seedSelect" name="seedType" id="seedType3">
+                        <option value="Artist">Artist</option>
+                        <option value="Track">Track</option>
+                        <option value="Genre">Genre</option>
+                    </select>
+                    <input class="seedInput" id="seedInput3" />
+                </div>
+                <br class="smallSeparator" />
+                <div class="seedDiv" id="seedDiv4">
+                    <select class="seedSelect" name="seedType" id="seedType4">
+                        <option value="Artist">Artist</option>
+                        <option value="Track">Track</option>
+                        <option value="Genre">Genre</option>
+                    </select>
+                    <input class="seedInput" id="seedInput4" />
+                </div>
+                <br class="smallSeparator" />
+                <div class="seedDiv" id="seedDiv5">
+                    <select class="seedSelect" name="seedType" id="seedType5">
+                        <option value="Artist">Artist</option>
+                        <option value="Track">Track</option>
+                        <option value="Genre">Genre</option>
+                    </select>
+                    <input class="seedInput" id="seedInput5" />
+                </div>
             </div>
-            <br />
-            <div class="slidecontainer">
-                <a class="descriptiveText2" id="trackCounter">
-                    Number of Tracks: 50
-                </a>
-            </div>
-            <br />
-            <div>
-                <input type="range" min="1" max="100" value="50" class="slider" id="trackSlider" oninput="changeTracks()">
-            </div>
+            <h1>
+                Hello
+            </h1>
+            <h1>
+                Hello
+            </h1>
         </div>
         <br />
-        <div class="mainSeedDiv" id="mainSeedDiv">
-            <h2 class="seedTitle" id="seedTitle">
-                Enter Seeds:
-            </h2>
-            <h2 class="seedDesc">
-                (Artists, Tracks or Genres that you like)
-            </h2>
-            <div class="seedDiv" id="seedDiv1">
-                <select class="seedSelect" name="seedType" id="seedType1">
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Track</option>
-                    <option value="Genre">Genre</option>
-                </select>
-                <input class="seedInput" id="seedInput1" />
-            </div>
-            <br class="smallSeparator" />
-            <div class="seedDiv" id="seedDiv2">
-                <select class="seedSelect" name="seedType" id="seedType2">
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Track</option>
-                    <option value="Genre">Genre</option>
-                </select>
-                <input class="seedInput" id="seedInput2" />
-            </div>
-            <br class="smallSeparator" />
-            <div class="seedDiv" id="seedDiv3">
-                <select class="seedSelect" name="seedType" id="seedType3">
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Track</option>
-                    <option value="Genre">Genre</option>
-                </select>
-                <input class="seedInput" id="seedInput3" />
-            </div>
-            <br class="smallSeparator" />
-            <div class="seedDiv" id="seedDiv4">
-                <select class="seedSelect" name="seedType" id="seedType4">
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Track</option>
-                    <option value="Genre">Genre</option>
-                </select>
-                <input class="seedInput" id="seedInput4" />
-            </div>
-            <br class="smallSeparator" />
-            <div class="seedDiv" id="seedDiv5">
-                <select class="seedSelect" name="seedType" id="seedType5">
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Track</option>
-                    <option value="Genre">Genre</option>
-                </select>
-                <input class="seedInput" id="seedInput5" />
-            </div>
-        </div>
-        <br/>
+        <hr class="whiteLine" />
         <Button class="submitButton" onclick="generatePlaylist()">
             Generate Playlist
         </Button>
