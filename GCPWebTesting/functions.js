@@ -10,28 +10,25 @@ function generatePlaylist() {
 
 function getInputValues() {
     let seedDivs = document.getElementsByClassName("seedDiv")
-    inputValues = Array(seedDivs.length)
+    inputValues = []
     for (let i = 0; i < seedDivs.length; i++) {
         let type = seedDivs[i].getElementsByClassName("seedSelect")[0].value
         let value = seedDivs[i].getElementsByClassName("seedInput")[0].value
-        inputValues[i] = {
+        if(value.trim() != "")
+        inputValues.push({
             type: type,
             value: value
-        }
-    }
-    for (let i = 0; i < inputValues.length; i++) {
-        if (inputValues[i].value == "") {
-            inputValues.splice(i)
-        }
+        })
     }
     if (inputValues.length > 0) {
-        getSpotifyId(0, getSpotifyId)
+        getSpotifyId(0)
     } else {
         alert("Please write at least 1 seed value")
     }
 }
 
-function getSpotifyId(target, callback) {
+function getSpotifyId(target) {
+    console.log(target)
     if (inputValues[target].type != "Genre") {
         let searchRequest = new XMLHttpRequest()
         let query = "?q=" + inputValues[target].value.replaceAll(" ", "%20")
@@ -43,10 +40,16 @@ function getSpotifyId(target, callback) {
         searchRequest.send()
         searchRequest.onreadystatechange = function () {
             if (searchRequest.readyState == XMLHttpRequest.DONE && searchRequest.status == 200 && searchRequest.responseText != "") {
-                let response = JSON.parse(searchRequest.responseText)
-                inputValues[target].value = response[inputValues[target].type.toLowerCase() + "s"].items[0].id //Index of response is either Tracks or Artists depending on the type of the inputvalue
-                if (target + 1 < inputValues.length && inputValues[target + 1].value != 0) {
-                    callback(target + 1, getSpotifyId)
+                let response = JSON.parse(searchRequest.responseText)[inputValues[target].type.toLowerCase() + "s"].items //Index of response is either Tracks or Artists depending on the type of the inputvalue
+
+                if (response.length == 0) { //Nothing matches the search query
+                    alert("The seed value: " + inputValues[target].value + " on row " + (target + 1) + " doesn't match anything on spotify, please change it and try again.")
+                    return; //Stop creating the playlist
+                }
+
+                inputValues[target].value = response[0].id 
+                if (target + 1 < inputValues.length) {
+                    getSpotifyId(target + 1)
                 } else {
                     getTracks()
                 }
@@ -58,8 +61,8 @@ function getSpotifyId(target, callback) {
             }
         }
     } else {
-        if (target + 1 < inputValues.length && inputValues[target + 1].value != 0) {
-            callback(target + 1, getSpotifyId)
+        if (target + 1 < inputValues.length) {
+            getSpotifyId(target + 1)
         } else {
             getTracks()
         }
@@ -81,10 +84,23 @@ function getTracks() {
     trackRequest.send()
     trackRequest.onreadystatechange = function () {
         if (trackRequest.readyState == XMLHttpRequest.DONE && trackRequest.status == 200 && trackRequest.responseText != "") {
+            console.log(trackRequest.responseText)
             let trackResponse = JSON.parse(trackRequest.responseText).tracks
+            console.log(trackResponse)
+            console.log(trackResponse[0])
+            if (trackResponse.length == 0) {
+                alert("We couldnt find any songs with those settings. Please change some values and try again.")
+                return; //Stop creating the playlist
+            }else if (trackResponse.length < noOfTracks) {
+                if (!confirm("We only found " + trackResponse.length + " tracks. Do you still want to make a playlist with those tracks?")) {
+                    return; //Stop creating the playlist
+                }
+            }
+
             for (let i = 0; i < trackResponse.length; i++) {
                 trackURIs[i] = trackResponse[i].uri
             }
+
             createPlaylist()
         }
     }
@@ -117,12 +133,8 @@ function createPlaylist() {
     playlistRequest.setRequestHeader("content-type", "application/json")
     playlistRequest.send(JSONbody)
     playlistRequest.onreadystatechange = function () {
-        console.log("Change")
         if (playlistRequest.readyState == XMLHttpRequest.DONE && playlistRequest.status == 201 && playlistRequest.responseText != "") {
-            console.log("Passed If")
-            console.log(playlistRequest.responseText)
             playlistResponse = JSON.parse(playlistRequest.responseText)
-            console.log(playlistResponse)
             playlistID = playlistResponse.id
             fillPlaylist()
         }
@@ -136,6 +148,6 @@ function fillPlaylist() {
     addTrackRequest.setRequestHeader("Authorization", "Bearer " + access_token)
     addTrackRequest.setRequestHeader("content-type", "application/json")
     addTrackRequest.send(JSONTrackBody)
-    alert("Playlist successfully created!")
+    alert("Playlist successfully created! It can be found in your spotify library with the title that you chose")
 }
 

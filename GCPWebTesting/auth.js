@@ -9,9 +9,6 @@ if (URL.lastIndexOf("access_token") < 0) {
     if (confirm("you need an access token to continue, do you want to get one?")) {
         window.open("https://accounts.spotify.com/authorize?client_id=b12e7cbb42944fbbbfd1756a0ad6e3fc&response_type=token&redirect_uri=" + URL.replaceAll("/", "%2F") +
             "&scope=user-read-private%20playlist-modify-public", "_self")
-    } else {
-        alert("No access token, No access! \n Page will close now!")
-        this.close()
     }
 } else {
     getAccessToken(window.location.hash)
